@@ -1,0 +1,25 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+
+
+<h2> Add A New Topping</h2>
+<form id='add_new_topping' action='' method='post'>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label for="topping_name">New Topping Name </label><br>
+    <input type="text" id="topping_name" name="topping_name" value=""><br>
+    <label for="topping_type">Type: </label><br>
+    <input type="text" id="topping_type" name="topping_type" value=""><br>
+    <label for="topping_price">Price:</label>
+    <input type="number" id="topping_price" name="topping_price" value="0.00"><br>
+    <input type="submit" value="Submit">
+</form>
+
+<!-- <form id='search_people' action='' method=''>
+<!- this form does not submit directly, the button handles all the interaction with backend -->
+    <!-- <label> Search people for first name starting with:</label>
+    <input id='first_name_search_string' type='text' name='first_name_search_string' value=''>
+    <input type="button" value="Search" onclick="searchPeopleByFirstName()">
+</form> -->
+</html>
