@@ -2,6 +2,11 @@ module.exports = function(){
     var express = require('express');
     var router = express.Router();
 
+    var handlebars = require('handlebars');
+    handlebars.registerHelper("setVar", function(varName, varValue, options) {
+        options.data.root[varName] = varValue;
+    });
+
 
     function getPizza(res, mysql, context, complete){
         mysql.pool.query("SELECT pizzaID as pid, pizza_name FROM Pizzas", function(error, results, fields){

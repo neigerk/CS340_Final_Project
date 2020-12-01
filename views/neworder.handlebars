@@ -15,22 +15,25 @@
     <label for="Pizza 1">Pizza 1: </label>
     <select name="pizza1">
         {{#each pizza}}
-        <option value={{pid}}>{{pizza_name}}</option>
+        <option value={{pid}}>{{pizza_name}}, {{pizza_price}}</option>
         {{/each}}
+        {{setVar p1 {{pizza_price}}}}
     </select><br>
      <label for="Pizza 2">Pizza 2: </label>
     <select name="pizza2">
         {{#each pizza}}
-        <option value={{pid}}>{{pizza_name}}</option>
+        <option value={{pid}}>{{pizza_name}}, {{pizza_price}}</option>
         {{/each}}
+        {{setVar p2 {{pizza_price}}}}
     </select><br> <label for="Pizza 3">Pizza 3: </label>
     <select name="pizza3">
         {{#each pizza}}
-        <option value={{pid}}>{{pizza_name}}</option>
+        <option value={{pid}}>{{pizza_name}}, {{pizza_price}}</option>
         {{/each}}
+        {{setVar p3 {{pizza_price}}}}
     </select><br>
-    <label for="favorite_pizza">Favoite Pizza:</label>
-    <label for="total_price">Total: </label>
+    {{setVar total=p1+p2+p3}}
+    <label for="total_price">Total: {{total}}</label>
     <input type="submit" value="Submit">
 </form>
 
