@@ -17,22 +17,22 @@
         {{#each pizza}}
         <option value={{pid}}>{{pizza_name}}, {{pizza_price}}</option>
         {{/each}}
-        {{setVar p1 {{pizza_price}}}}
+        <!-- {{setVar p1 {{pizza_price}}}} -->
     </select><br>
      <label for="Pizza 2">Pizza 2: </label>
     <select name="pizza2">
         {{#each pizza}}
         <option value={{pid}}>{{pizza_name}}, {{pizza_price}}</option>
         {{/each}}
-        {{setVar p2 {{pizza_price}}}}
+        <!-- {{setVar p2 {{pizza_price}}}} -->
     </select><br> <label for="Pizza 3">Pizza 3: </label>
     <select name="pizza3">
         {{#each pizza}}
         <option value={{pid}}>{{pizza_name}}, {{pizza_price}}</option>
         {{/each}}
-        {{setVar p3 {{pizza_price}}}}
+        <!-- {{setVar p3 {{pizza_price}}}} -->
     </select><br>
-    {{setVar total=p1+p2+p3}}
+    <!-- {{setVar total=p1+p2+p3}} -->
     <label for="total_price">Total: {{total}}</label>
     <input type="submit" value="Submit">
 </form>
