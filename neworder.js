@@ -9,7 +9,7 @@ module.exports = function(){
 
 
     function getPizza(res, mysql, context, complete){
-        mysql.pool.query("SELECT pizzaID as pid, pizza_name FROM Pizzas", function(error, results, fields){
+        mysql.pool.query("SELECT pizzaID as pid, pizza_name, pizza_price FROM Pizzas", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
