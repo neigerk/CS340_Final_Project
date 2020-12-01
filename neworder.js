@@ -20,7 +20,7 @@ module.exports = function(){
     }
 
     function getCustomer(res, mysql, context, complete){
-        mysql.pool.query("SELECT customerID AS cid, first_name, last_name", function(error, results, fields){
+        mysql.pool.query("SELECT customerID AS cid, first_name, last_name FROM Customers", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
