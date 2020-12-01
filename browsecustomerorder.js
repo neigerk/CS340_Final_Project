@@ -93,7 +93,7 @@ module.exports = function(){
     // }
     //
     function getCustomer(res, mysql, context, id, complete){
-        var sql = "SELECT customerID, first_name, last_name FROM Customers WHERE customerID = ?";
+        var sql = "SELECT customerID, first_name, last_name, favorite_pizza FROM Customers WHERE customerID = ?";
         var inserts = [id];
         mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
