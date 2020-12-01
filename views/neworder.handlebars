@@ -16,8 +16,7 @@
     <select name="pizza1">
         <option value='NULL'> None </option>
         {{#each pizza}}
-        <option value={{pid}}>{{pizza_name}}  </option>
-        {{pizza_price}}
+        <option value={{pid}}>{{pizza_name}}  {{pizza_price}}</option>
         {{/each}}
     </select><br>
      <label for="Pizza 2">Pizza 2: </label>
