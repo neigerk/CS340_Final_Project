@@ -5,7 +5,7 @@ function updatePrice(res, mysql) {
     var price1 = 0.0;
     var price2 = 0.0;
     var price3 = 0.0;
-    var total_price = document.getElementById('totalPrice').value;
+    var total_price = document.getElementById('totalPrice').innerHTML;
 
     mysql.pool.query("SELECT pizza_price FROM Pizzas WHERE pizzaID = " + Number(pizza1), function(error, results){
         if(error){
