@@ -1,0 +1,29 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+
+
+<h2> Add a New Customer</h2>
+<form id='add_new_customer' action='' method='post'>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label for="first_name">First Name: </label><br>
+    <input type="text" id="fisrt_name" name="first_name" value=""><br>
+    <label for="last_name">Last Name: </label><br>
+    <input type="text" id="last_name" name="last_name" value=""><br>
+    <label for="favorite_pizza">Favoite Pizza:</label>
+    <select name="favorite_pizza">
+        {{#each pizza}}
+        <option value={{id}}>{{pizza_name}}</option>
+        {{/each}}
+    </select><br>
+    <input type="submit" value="Submit">
+</form>
+
+<!-- <form id='search_people' action='' method=''>
+<!- this form does not submit directly, the button handles all the interaction with backend -->
+    <!-- <label> Search people for first name starting with:</label>
+    <input id='first_name_search_string' type='text' name='first_name_search_string' value=''>
+    <input type="button" value="Search" onclick="searchPeopleByFirstName()">
+</form> -->
+</html>
