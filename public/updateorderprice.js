@@ -1,7 +1,7 @@
 function updatePrice(res, mysql) {
-    var pizza1 = document.getElementByID('p1').value;
-    var pizza2 = document.getElementByID('p2').value;
-    var pizza3 = document.getElementByID('p3').value;
+    var pizza1 = document.getElementById('p1').value;
+    var pizza2 = document.getElementById('p2').value;
+    var pizza3 = document.getElementById('p3').value;
     var price1 = 0.0;
     var price2 = 0.0;
     var price3 = 0.0;
