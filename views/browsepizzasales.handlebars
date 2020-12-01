@@ -1,0 +1,44 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+
+
+<h2> Browse Pizza Sales</h2>
+<form id='filter_pizza_sales' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label for="start_date">Enter start date: </label><br>
+    <input type="date" id="start_date" name="start_date" value=""><br>
+    <label for="end_date">Enter end date: </label><br>
+    <input type="date" id="end_date" name="end_date" value=""><br>
+    <input type="button" value="Filter" onclick="filterPizzasByDate()">
+</form>
+
+<!-- <form id='search_people' action='' method=''>
+<!- this form does not submit directly, the button handles all the interaction with backend -->
+    <!-- <label> Search people for first name starting with:</label>
+    <input id='first_name_search_string' type='text' name='first_name_search_string' value=''>
+    <input type="button" value="Search" onclick="searchPeopleByFirstName()">
+</form> -->
+<br>
+<table>
+    <thead>
+        <th>Date</th>
+        <th>Pizza Name</th>
+        <th>Quantity</th>
+        <th>Revenue</th>
+    </thead>
+    <tbody>
+        {{#each pizzas}}
+        <tr>
+            <td>{{date}}</td>
+            <td>{{Pizza_Name}}</td>
+            <td>{{Quantity}}</td>
+            <td>{{Revenue}}</td>
+            <!-- <td><button onclick="deletePerson({{id}})">Delete</button></td> -->
+            <!-- <td><a href="/people/{{id}}">Update</a></td> -->
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+</html>
