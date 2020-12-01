@@ -99,7 +99,7 @@ module.exports = function(){
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["filterorders.js"];
+        context.jsscripts = ["filterorders.js", "deleteorder.js"];
         var mysql = req.app.get('mysql');
         getCustomerOrders(res, mysql, context, complete);
         function complete(){
@@ -115,7 +115,7 @@ module.exports = function(){
     router.get('/filter/:start_date/:end_date', function(req, res){
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["filterorders.js"];
+        context.jsscripts = ["filterorders.js", "deleteorder.js"];
         var mysql = req.app.get('mysql');
         getCustomerOrdersbyDate(req, res, mysql, context, complete);
         // getPeoplebyHomeworld(req,res, mysql, context, complete);
