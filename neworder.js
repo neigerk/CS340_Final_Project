@@ -3,7 +3,7 @@ module.exports = function(){
     var router = express.Router();
 
     function getPizza(res, mysql, context, complete){
-        mysql.pool.query("SELECT pizzaID as pid, pizza_name FROM Pizzas", function(error, results, fields){
+        mysql.pool.query("SELECT pizza_price, pizzaID as pid, pizza_name FROM Pizzas", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
@@ -26,23 +26,23 @@ module.exports = function(){
 
     var today = new Date();
     var dd = today.getDate();
-    var mm = today.getMonth()+1; 
+    var mm = today.getMonth()+1;
     var yyyy = today.getFullYear();
-    if(dd<10) 
+    if(dd<10)
     {
         dd='0'+dd;
-    } 
+    }
 
-    if(mm<10) 
+    if(mm<10)
     {
         mm='0'+mm;
-    } 
+    }
     today = yyyy+'-'+mm+'-'+dd;
 
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["filtersales.js","deleteperson.js","filterpeople.js","searchpeople.js"];
+        context.jsscripts = ["filtersales.js","updateorderprice.js","deleteperson.js","filterpeople.js","searchpeople.js"];
         var mysql = req.app.get('mysql');
         getPizza(res, mysql, context, complete);
         getCustomer(res, mysql, context, complete);
