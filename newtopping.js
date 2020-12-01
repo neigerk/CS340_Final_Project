@@ -21,7 +21,7 @@ module.exports = function(){
         var context = {};
         context.jsscripts = ["filtersales.js","deleteperson.js","filterpeople.js","searchpeople.js"];
         var mysql = req.app.get('mysql');
-        res.render('newcustomer', context);
+        res.render('newtopping', context);
         // getPizza(res, mysql, context, complete);
         // function complete(){
         //     callbackCount++;
