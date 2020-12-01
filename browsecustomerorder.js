@@ -166,7 +166,7 @@ module.exports = function(){
         var context = {};
         context.jsscripts = ["selectedpizza.js", "updatecustomer.js"];
         var mysql = req.app.get('mysql');
-        getPerson(res, mysql, context, req.params.id, complete);
+        getCustomer(res, mysql, context, req.params.id, complete);
         getPizza(res, mysql, context, complete);
         function complete(){
             callbackCount++;
