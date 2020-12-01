@@ -1,6 +1,6 @@
 function deleteOrder(id){
     $.ajax({
-        url: '/browsecustomerorders/order/' + id,
+        url: '/browsecustomerorder/order/' + id,
         type: 'DELETE',
         success: function(result){
             window.location.reload(true);
