@@ -201,13 +201,13 @@ module.exports = function(){
 
     /* The URI that update data is sent to in order to update a person */
 
-    /*
+
     router.put('/:id', function(req, res){
         var mysql = req.app.get('mysql');
         console.log(req.body)
         console.log(req.params.id)
-        var sql = "UPDATE bsg_people SET fname=?, lname=?, homeworld=?, age=? WHERE character_id=?";
-        var inserts = [req.body.fname, req.body.lname, req.body.homeworld, req.body.age, req.params.id];
+        var sql = "UPDATE Customers SET first_name=?, last_name=?, favorite_pizza=? WHERE customerID=?";
+        var inserts = [req.body.first_name, req.body.last_name, req.body.favorite_pizza, req.params.id];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(error)
@@ -218,7 +218,7 @@ module.exports = function(){
                 res.end();
             }
         });
-    });*/
+    });
 
     /* Route to delete a person, simply returns a 202 upon success. Ajax will handle this. */
 
