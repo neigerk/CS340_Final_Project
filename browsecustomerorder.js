@@ -35,7 +35,7 @@ module.exports = function(){
     //     });
     // }
     function getCustomerOrders(res, mysql, context, complete){
-        mysql.pool.query("SELECT Orders.date, Customers.first_name AS First_Name, Customers.last_name AS Last_Name, Orders.order_price AS Price FROM Orders JOIN Customers ON Orders.CID = Customers.customerID ORDER BY Orders.date", function(error, results, fields){
+        mysql.pool.query("SELECT Orders.date, customerID, orderID, Customers.first_name AS First_Name, Customers.last_name AS Last_Name, Orders.order_price AS Price FROM Orders JOIN Customers ON Orders.CID = Customers.customerID ORDER BY Orders.date", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
@@ -48,7 +48,7 @@ module.exports = function(){
     function getCustomerOrdersbyDate(req, res, mysql, context, complete){
       var format_start = req.params.start_date.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
       var format_end = req.params.end_date.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
-      var query = "SELECT Orders.date, Customers.first_name AS First_Name, Customers.last_name AS Last_Name, Orders.order_price AS Price FROM Orders JOIN Customers ON Orders.CID = Customers.customerID WHERE Orders.date BETWEEN '" + format_start + "' AND '"+ format_end + "' ORDER BY Orders.date"
+      var query = "SELECT Orders.date, customerID, orderID, Customers.first_name AS First_Name, Customers.last_name AS Last_Name, Orders.order_price AS Price FROM Orders JOIN Customers ON Orders.CID = Customers.customerID WHERE Orders.date BETWEEN '" + format_start + "' AND '"+ format_end + "' ORDER BY Orders.date"
       console.log(query);
       console.log(req.params)
       console.log(format_start + " " + format_end);
@@ -211,11 +211,11 @@ module.exports = function(){
 
     /* Route to delete a person, simply returns a 202 upon success. Ajax will handle this. */
 
-    /*
-    router.delete('/:id', function(req, res){
+
+    router.delete('order/:id', function(req, res){
         var mysql = req.app.get('mysql');
-        var sql = "DELETE FROM bsg_people WHERE character_id = ?";
-        var inserts = [req.params.id];
+        var sql = "DELETE FROM Pizzas_Orders WHERE orderID = ?; DELETE FROM Orders WHERE orderID = ?";
+        var inserts = [req.params.id, req.params.id];
         sql = mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
                 console.log(error)
@@ -226,7 +226,7 @@ module.exports = function(){
                 res.status(202).end();
             }
         })
-    })*/
+    })
 
     return router;
 }();
