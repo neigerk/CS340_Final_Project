@@ -1,3 +1,3 @@
-function selectPlanet(id){
+function selectPizza(id){
     $("#pizza-selector").val(id);
 }

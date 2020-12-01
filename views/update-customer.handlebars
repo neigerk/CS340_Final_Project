@@ -1,8 +1,8 @@
 <html>
 <h1>Update {{customer.first_name}} {{customer.last_name}}:</h1>
 <form id="update-customer" action="/browsecustomerorder" method="post">
-    First name: <input type="text" name="first_name" value="{{person.fname}}"><br>
-    Last name: <input type="text" name="last_name" value="{{person.lname}}"><br>
+    First name: <input type="text" name="first_name" value="{{customer.first_name}}"><br>
+    Last name: <input type="text" name="last_name" value="{{customer.last_name}}"><br>
     Favorite Pizza: <select name="favorite_pizza" id="pizza-selector">
         {{#each pizza}}
             <option value="{{id}}">{{pizza_name}}</option>
@@ -10,5 +10,5 @@
     </select><br>
 </form>
 <button onclick="updateCustomer({{customer.customerID}})">Update</button>
-<script defer>selectPlanet({{customer.favorite_pizza}});</script>
+<script defer>selectPizza({{customer.favorite_pizza}});</script>
 </html>
