@@ -65,6 +65,17 @@ module.exports = function(){
         });
     }
 
+    function getPizza(res, mysql, context, complete){
+
+        mysql.pool.query("SELECT pizzaID AS id, pizza_name FROM Pizzas", function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.pizza = results;
+            complete();
+        });
+    }
     // /* Find people whose fname starts with a given string in the req */
     // function getPeopleWithNameLike(req, res, mysql, context, complete) {
     //   //sanitize the input as well as include the % character
@@ -81,18 +92,18 @@ module.exports = function(){
     //     });
     // }
     //
-    // function getPerson(res, mysql, context, id, complete){
-    //     var sql = "SELECT character_id as id, fname, lname, homeworld, age FROM bsg_people WHERE character_id = ?";
-    //     var inserts = [id];
-    //     mysql.pool.query(sql, inserts, function(error, results, fields){
-    //         if(error){
-    //             res.write(JSON.stringify(error));
-    //             res.end();
-    //         }
-    //         context.person = results[0];
-    //         complete();
-    //     });
-    // }
+    function getCustomer(res, mysql, context, id, complete){
+        var sql = "SELECT customerID, first_name, last_name FROM Customers WHERE customerID = ?";
+        var inserts = [id];
+        mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.customer = results;//[0];
+            complete();
+        });
+    }
 
     /*Display all people. Requires web based javascript to delete users with AJAX*/
 
@@ -149,23 +160,23 @@ module.exports = function(){
 
     /* Display one person for the specific purpose of updating people */
 
-    /*
+
     router.get('/:id', function(req, res){
         callbackCount = 0;
         var context = {};
-        context.jsscripts = ["selectedplanet.js", "updateperson.js"];
+        context.jsscripts = ["selectedpizza.js", "updatecustomer.js"];
         var mysql = req.app.get('mysql');
         getPerson(res, mysql, context, req.params.id, complete);
-        getPlanets(res, mysql, context, complete);
+        getPizza(res, mysql, context, complete);
         function complete(){
             callbackCount++;
             if(callbackCount >= 2){
-                res.render('update-person', context);
+                res.render('update-customer', context);
             }
 
         }
     });
-    */
+
 
     /* Adds a person, redirects to the people page after adding */
 
