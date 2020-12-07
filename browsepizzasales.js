@@ -35,7 +35,7 @@ module.exports = function(){
     //     });
     // }
     function getPizza(res, mysql, context, complete){
-        mysql.pool.query("SELECT Orders.date, Pizzas.pizza_name AS Pizza_Name, COUNT(Pizzas.pizzaID) AS Quantity, SUM(Pizzas.pizza_price) AS Revenue FROM Orders INNER JOIN Pizzas_Orders ON Orders.orderID = Pizzas_Orders.orderID INNER JOIN Pizzas ON Pizzas_Orders.pizzaID = Pizzas.pizzaID GROUP BY Pizza_Name, Orders.date ORDER BY Orders.date", function(error, results, fields){
+        mysql.pool.query("SELECT Orders.date, Pizzas.pizza_name AS Pizza_Name, COUNT(Pizzas.pizzaID) * Pizzas_Orders.quantity AS Quantity, Pizzas.pizza_price * SUM(Pizzas_Orders.quantity) AS Revenue FROM Orders INNER JOIN Pizzas_Orders ON Orders.orderID = Pizzas_Orders.orderID INNER JOIN Pizzas ON Pizzas_Orders.pizzaID = Pizzas.pizzaID GROUP BY Pizza_Name, Orders.date ORDER BY Orders.date", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
@@ -48,7 +48,7 @@ module.exports = function(){
     function getPizzasbyDate(req, res, mysql, context, complete){
       var format_start = req.params.start_date.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
       var format_end = req.params.end_date.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
-      var query = "SELECT Orders.date, Pizzas.pizza_name AS Pizza_Name, COUNT(Pizzas.pizzaID) AS Quantity, SUM(Pizzas.pizza_price) AS Revenue FROM Orders INNER JOIN Pizzas_Orders ON Orders.orderID = Pizzas_Orders.orderID INNER JOIN Pizzas ON Pizzas_Orders.pizzaID = Pizzas.pizzaID WHERE Orders.date BETWEEN '" + format_start + "' AND '"+ format_end + "' GROUP BY Pizza_Name, Orders.date ORDER BY Orders.date"
+      var query = "SELECT Orders.date, Pizzas.pizza_name AS Pizza_Name, COUNT(Pizzas.pizzaID) * Pizzas_Orders.quantity AS Quantity, Pizzas.pizza_price * SUM(Pizzas_Orders.quantity) AS Revenue FROM Orders INNER JOIN Pizzas_Orders ON Orders.orderID = Pizzas_Orders.orderID INNER JOIN Pizzas ON Pizzas_Orders.pizzaID = Pizzas.pizzaID WHERE Orders.date BETWEEN '" + format_start + "' AND '"+ format_end + "' GROUP BY Pizza_Name, Orders.date ORDER BY Orders.date"
       console.log(query);
       console.log(req.params)
       console.log(format_start + " " + format_end);
