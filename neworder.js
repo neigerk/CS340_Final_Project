@@ -89,15 +89,60 @@ module.exports = function(){
         var p1_quantity = 0;
         var p2_quantity = 0;
         var p3_quantity = 0;
-        var p1_price = {};
-        var p2_price = {};
-        var p3_price = {};
-        getPrice(mysql, p1, complete, p1_price);
-        getPrice(mysql, p2, complete, p2_price);
-        getPrice(mysql, p3, complete, p3_price);
-        if(p1 !== ''){var p1_quantity = req.body.pizza1_quantity;}
-        if(p2 !== ''){var p2_quantity = req.body.pizza1_quantity;}
-        if(p3 !== ''){var p3_quantity = req.body.pizza1_quantity;}
+        var p1_price = 0;
+        var p2_price = 0;
+        var p3_price = 0;
+        // getPrice(mysql, p1, complete, p1_price);
+        // getPrice(mysql, p2, complete, p2_price);
+        // getPrice(mysql, p3, complete, p3_price);
+        if(p1 !== ''){
+          var p1_quantity = req.body.pizza1_quantity;
+
+          var query = "SELECT Pizzas.pizza_price AS price FROM Pizzas WHERE pizzaID = " + p1;
+          mysql.pool.query(query, function(error, results, fields){
+            if(error){
+              res.write(JSON.stringify(error));
+              res.end();
+            }
+            console.log(results[0].price);
+            console.log(results[0]);
+            p1_price = results[0].price;
+            console.log("p1_price: " + p1_price);
+            complete();
+          })
+        }
+        if(p2 !== ''){
+          var p2_quantity = req.body.pizza1_quantity;
+
+          var query = "SELECT Pizzas.pizza_price AS price FROM Pizzas WHERE pizzaID = " + p2;
+          mysql.pool.query(query, function(error, results, fields){
+            if(error){
+              res.write(JSON.stringify(error));
+              res.end();
+            }
+            console.log(results[0].price);
+            console.log(results[0]);
+            p2_price = results[0].price;
+            console.log("p2_price: " + p2_price);
+            complete();
+          })
+        }
+        if(p3 !== ''){
+          var p3_quantity = req.body.pizza1_quantity;
+
+          var query = "SELECT Pizzas.pizza_price AS price FROM Pizzas WHERE pizzaID = " + p3;
+          mysql.pool.query(query, function(error, results, fields){
+            if(error){
+              res.write(JSON.stringify(error));
+              res.end();
+            }
+            console.log(results[0].price);
+            console.log(results[0]);
+            p3_price = results[0].price;
+            console.log("p3_price: " + p3_price);
+            complete();
+          })
+        }
 
 
         function complete(){
