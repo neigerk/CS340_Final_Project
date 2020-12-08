@@ -49,7 +49,7 @@ module.exports = function(){
         });
 
         if(req.body.topping1='NULL'){
-            res.redirect('./');
+            res.end();
         }else{
         var sql1 = "INSERT INTO Pizzas_Toppings (pizzaID, toppingID) VALUES(?, ?)";
         var inserts1 = [pid, req.body.topping1];
@@ -65,7 +65,7 @@ module.exports = function(){
         }
 
         if(req.body.topping2='NULL'){
-            res.redirect('./');
+            res.end();
         }else{
         var sql2 = "INSERT INTO Pizzas_Toppings (pizzaID, toppingID) VALUES(?, ?)";
         var inserts2 = [pid, req.body.topping2];
@@ -81,7 +81,7 @@ module.exports = function(){
         }
 
         if(req.body.topping3='NULL'){
-            res.redirect('./');
+            res.end();
         }else{
         var sql3 = "INSERT INTO Pizzas_Toppings (pizzaID, toppingID) VALUES(?, ?)";
         var inserts3 = [pid, req.body.topping3];
@@ -97,7 +97,7 @@ module.exports = function(){
         }
 
         if(req.body.topping4='NULL'){
-            res.redirect('./');
+            res.end();
         }else{
         var sql4 = "INSERT INTO Pizzas_Toppings (pizzaID, toppingID) VALUES(?, ?)";
         var inserts4 = [pid, req.body.topping4];
@@ -113,7 +113,7 @@ module.exports = function(){
         }
 
         if(req.body.topping5='NULL'){
-            res.redirect('./');
+            res.end();
         }else{
         var sql5 = "INSERT INTO Pizzas_Toppings (pizzaID, toppingID) VALUES(?, ?)";
         var inserts5 = [pid, req.body.topping5];
@@ -126,7 +126,7 @@ module.exports = function(){
              //   res.redirect('./');
             //}
         });
-    }
+        }
 
     });
 
