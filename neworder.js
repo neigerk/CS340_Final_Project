@@ -55,19 +55,51 @@ module.exports = function(){
         }
     });
 
+
+    function getPrice(mysql, pizzaID){
+        var query = "SELECT Pizzas.pizza_price AS price FROM Pizzas WHERE pizzaID = " + pizzaID;
+
+        mysql.pool.query(query, function(error, results, fields){
+          if(error){
+            res.write(JSON.stringify(error));
+            res.end();
+          }
+          return results[0].price;
+        })
+    }
+
     router.post('/', function(req, res){
-//        console.log(req.body.homeworld)
         console.log(req.body);
         console.log(req);
         var today = new Date().toISOString().slice(0,10);
         console.log(today);
-        // var dd = String(today.getDate()).padStart(2, '0');
-        // var mm = String(today.getMonth() + 1).padStart(2, '0');
-        // var yyyy = today.getFullYear();
-        // today = yyyy+"-"+mm+"-"+dd;
+        var customer = req.body.customer;
+        var total = 0;
+        var p1 = req.body.pizza1;
+        var p2 = req.body.pizza2;
+        var p3 = req.body.pizza3;
+        if(p1 !== ''){
+          var p1_quantity = req.body.pizza1_quantity;
+          var p1_price = getPrice(mysql, p1);
+          console.log("p1_price: " + p1_price);
+          total = Number(total) + (Number(p1_quantity) * Number(p1_price));
+        }
+        if(p2 !== ''){
+          var p2_quantity = req.body.pizza1_quantity;
+          var p2_price = getPrice(mysql, p2);
+          console.log("p1_price: " + p2_price);
+          total = Number(total) + (Number(p2_quantity) * Number(p2_price));
+        }
+        if(p3 !== ''){
+          var p3_quantity = req.body.pizza1_quantity;
+          var p3_price = getPrice(mysql, p3);
+          console.log("p1_price: " + p3_price);
+          total = Number(total) + (Number(p3_quantity) * Number(p3_price));
+        }
+
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Orders (order_price, date, CID, order_status) VALUES (?,?,?,?)";
-        var inserts = [Number(req.body.total_price), today, req.body.customer, "ORDERED"];
+        var inserts = [total, today, req.body.customer, "ORDERED"];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
@@ -79,42 +111,7 @@ module.exports = function(){
         });
     });
 
-    // router.get('/filter/:start_date/:end_date', function(req, res){
-    //     var callbackCount = 0;
-    //     var context = {};
-    //     context.jsscripts = ["filterpizzas.js","deleteperson.js","filterpeople.js","searchpeople.js"];
-    //     var mysql = req.app.get('mysql');
-    //     getPizzasbyDate(req, res, mysql, context, complete);
-    //     // getPeoplebyHomeworld(req,res, mysql, context, complete);
-    //     // getPlanets(res, mysql, context, complete);
-    //     function complete(){
-    //         callbackCount++;
-    //         if(callbackCount >= 1){
-    //             res.render('browsepizzasales', context);
-    //         }
-    //
-    //     }
-    // });
 
-    // function getPizzasbyDate(req, res, mysql, context, complete){
-    //   var format_start = req.params.start_date.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
-    //   var format_end = req.params.end_date.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
-    //   var query = "SELECT Orders.date, Pizzas.pizza_name AS Pizza_Name, COUNT(Pizzas.pizzaID) * Pizzas_Orders.quantity AS Quantity, Pizzas.pizza_price * SUM(Pizzas_Orders.quantity) AS Revenue FROM Orders INNER JOIN Pizzas_Orders ON Orders.orderID = Pizzas_Orders.orderID INNER JOIN Pizzas ON Pizzas_Orders.pizzaID = Pizzas.pizzaID WHERE Orders.date BETWEEN '" + format_start + "' AND '"+ format_end + "' GROUP BY Pizza_Name, Orders.date ORDER BY Orders.date"
-    //   console.log(query);
-    //   console.log(req.params)
-    //   console.log(format_start + " " + format_end);
-    //   var inserts = [format_start, format_end]
-    //   //console.log(inserts)
-    //   // mysql.pool.query(query, inserts, function(error, results, fields){
-    //   mysql.pool.query(query, function(error, results, fields){
-    //         if(error){
-    //             res.write(JSON.stringify(error));
-    //             res.end();
-    //         }
-    //         context.pizzas = results;
-    //         complete();
-    //     });
-    // }
 
     function getPizzaPrice(req, res, mysql, context, complete){
       console.log(req.params);
@@ -127,13 +124,6 @@ module.exports = function(){
           res.end();
         }
         context.price = results[0].price;
-        // console.log("results: " + results);
-        // console.log("results.price: " + results.price);
-        // console.log("results[0].price: " + results[0].price);
-        // //console.log("results[1].price: " + results[1].price);
-        // console.log("results[0]: " + results[0]);
-        //console.log("results[1]: " + results[1]);
-
         complete();
       })
     }
