@@ -6,6 +6,7 @@
 
 <h2> Add a New Order</h2>
 <form id='add_new_order' action='' method='post'>
+  <!-- Customer -->
     <label for="customer">Customer: </label>
     <select name="customer">
         <option value=''>Null</option>
@@ -13,29 +14,42 @@
         <option value={{cid}}>{{first_name}} {{last_name}}</option>
         {{/each}}
     </select><br>
+    <!-- Pizza 1 -->
     <label for="Pizza 1">Pizza 1: </label>
-    <select name="pizza1" onchange="updatePrice()">
+    <select name="pizza1" id="pizza1" onchange="updatePrice()">
         <option value=''>Null</option>
         {{#each pizza}}
-        <option id='p1' value={{pid}}>{{pizza_name}} {{pizza_price}}</option>
+        <option value={{pid}}>{{pizza_name}} {{pizza_price}}</option>
         {{/each}}
-    </select><br>
+    </select>
+    <input type="number" id="pizza1_quantity" name="pizza1_quantity" value="0">
+    <div class="pizza1_cost" id="pizza1_cost">$0.00</div>
+    <br>
+    <!-- Pizza 2 -->
      <label for="Pizza 2">Pizza 2: </label>
-    <select name="pizza2" onchange="updatePrice()">
+    <select name="pizza2" id="pizza2" onchange="updatePrice()">
         <option value=''>Null</option>
         {{#each pizza}}
-        <option id='p2' value={{pid}}>{{pizza_name}} {{pizza_price}}</option>
+        <option value={{pid}}>{{pizza_name}} {{pizza_price}}</option>
         {{/each}}
-    </select><br> 
+    </select>
+    <input type="number" id="pizza2_quantity" name="pizza2_quantity" value="0">
+    <div class="pizza2_cost" id="pizza2_cost">$0.00</div>
+    <br>
+    <!-- Pizza 3 -->
     <label for="Pizza 3">Pizza 3: </label>
-    <select name="pizza3" onchange="updatePrice()">
+    <select name="pizza3" id="pizza3" onchange="updatePrice()">
         <option value=''>Null</option>
         {{#each pizza}}
-        <option id='p3' value={{pid}}>{{pizza_name}} {{pizza_price}}</option>
+        <option value={{pid}}>{{pizza_name}} {{pizza_price}}</option>
         {{/each}}
-    </select><br>
+    </select>
+    <input type="number" id="pizza1_quantity" name="pizza1_quantity" value="0">
+    <div class="pizza3_cost" id="pizza3_cost">$0.00</div>
+    <br>
+    <!-- Total -->
     <label for="total">Total: </label>
-    <label id='total_price'>0</label><br>
+    <div id='total_price'>0</div><br>
     <input type="submit" value="Submit">
 </form>
 
