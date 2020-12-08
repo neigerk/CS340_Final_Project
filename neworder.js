@@ -119,7 +119,7 @@ module.exports = function(){
           res.write(JSON.stringify(error));
           res.end();
         }
-        context = results[0];
+        context = results;
         complete();
       })
     }
