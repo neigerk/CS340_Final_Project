@@ -23,7 +23,7 @@ function updatePrice(){
 
 function getPrice(pizzaID){
     var getRequest = new XMLHttpRequest();
-    var requestURL = '/get/' + pizzaID;
+    var requestURL = 'neworder/get/' + pizzaID;
     getRequest.open('GET', requestURL);
 
     getRequest.addEventListener('load', function (event) {
