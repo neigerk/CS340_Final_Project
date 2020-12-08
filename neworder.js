@@ -69,6 +69,7 @@ module.exports = function(){
     }
 
     router.post('/', function(req, res){
+        var mysql = req.app.get('mysql');
         console.log(req.body);
         console.log(req);
         var today = new Date().toISOString().slice(0,10);
@@ -97,7 +98,7 @@ module.exports = function(){
           total = Number(total) + (Number(p3_quantity) * Number(p3_price));
         }
 
-        var mysql = req.app.get('mysql');
+
         var sql = "INSERT INTO Orders (order_price, date, CID, order_status) VALUES (?,?,?,?)";
         var inserts = [total, today, req.body.customer, "ORDERED"];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
