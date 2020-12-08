@@ -140,6 +140,8 @@ module.exports = function(){
             }
 
             }
+
+            res.redirect('./');
         });
 
         // if(req.body.topping1 == 'NULL'){
