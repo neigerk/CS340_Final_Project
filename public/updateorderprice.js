@@ -10,9 +10,9 @@
 // };
 
 function updatePrice(){
-  p1 = getElementById(pizza1).value;
-  p2 = getElementById(pizza2).value;
-  p3 = getElementById(pizza3).value;
+  p1 = Document.getElementById(pizza1).value;
+  p2 = Document.getElementById(pizza2).value;
+  p3 = Document.getElementById(pizza3).value;
   console.log(getPrice(p1));
   console.log(getPrice(p2));
   console.log(getPrice(p3));
