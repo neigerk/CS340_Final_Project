@@ -43,11 +43,23 @@ function getPrice(pizzaID, quantity, field){
         var obj = JSON.parse(event.target.response);
         var price = obj.price * quantity.value;
         field.innerHTML = "$"+price.toString();
+        field.value = price;
         // console.log(obj);
         // console.log(obj.price);
         // console.log(event.target.response);
         // console.log(event.target.response.price);
+        updateTotal();
       }
     });
     getRequest.send();
+}
+
+function updateTotal (){
+  var p1_price_field = document.getElementById('pizza1_cost');
+  var p2_price_field = document.getElementById('pizza2_cost');
+  var p3_price_field = document.getElementById('pizza3_cost');
+  var total_field = document.getElementById('total_price');
+  var total = Number(p1_price_field.value) + Number(p2_price_field.value) + Number(p3_price_field.value);
+  total_field.innerHTML = "$" + total.toString();
+  total_field.value = total;
 }
