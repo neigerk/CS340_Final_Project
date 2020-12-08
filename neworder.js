@@ -184,8 +184,8 @@ module.exports = function(){
             }
         }
         function complete2(){
-          var sql = "INSERT INTO Pizzas_Orders (pizzaID, orderID, quantity) VALUES (?,?,?)";
           if(p1 !== ''){
+            var sql = "INSERT INTO Pizzas_Orders (pizzaID, orderID, quantity) VALUES (?,?,?)";
             var inserts = [p1, orderID, p1_quantity];
             sql = mysql.pool.query(sql,inserts,function(error, results, fields){
                 if(error){
@@ -194,35 +194,35 @@ module.exports = function(){
                     res.end();
                 }else{
                     console.log("successfully added new row");
-                    if(p2 !== ''){
-                      var inserts = [p2, orderID, p2_quantity];
-                      sql = mysql.pool.query(sql,inserts,function(error, results, fields){
-                          if(error){
-                              console.log(JSON.stringify(error))
-                              res.write(JSON.stringify(error));
-                              res.end();
-                          }else{
-                              console.log("successfully added new row");
-                              if(p3 !== ''){
-                                var inserts = [p3, orderID, p3_quantity];
-                                sql = mysql.pool.query(sql,inserts,function(error, results, fields){
-                                    if(error){
-                                        console.log(JSON.stringify(error))
-                                        res.write(JSON.stringify(error));
-                                        res.end();
-                                    }else{
-                                        console.log("successfully added new row");
-                                    }
-                                  });
-                              }
-                          }
-                        });
-                    }
                 }
               });
           }
-
-
+          if(p2 !== ''){
+            var sql = "INSERT INTO Pizzas_Orders (pizzaID, orderID, quantity) VALUES (?,?,?)";
+            var inserts = [p2, orderID, p2_quantity];
+            sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+                if(error){
+                    console.log(JSON.stringify(error))
+                    res.write(JSON.stringify(error));
+                    res.end();
+                }else{
+                    console.log("successfully added new row");
+                }
+              });
+          }
+          if(p3 !== ''){
+            var sql = "INSERT INTO Pizzas_Orders (pizzaID, orderID, quantity) VALUES (?,?,?)";
+            var inserts = [p3, orderID, p3_quantity];
+            sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+                if(error){
+                    console.log(JSON.stringify(error))
+                    res.write(JSON.stringify(error));
+                    res.end();
+                }else{
+                    console.log("successfully added new row");
+                }
+              });
+          }
 
         }
     });
