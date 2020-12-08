@@ -120,6 +120,7 @@ module.exports = function(){
           res.end();
         }
         context.price = results;
+        console.log(results);
         complete();
       })
     }
