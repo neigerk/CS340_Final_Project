@@ -66,7 +66,7 @@ module.exports = function(){
           }
           console.log(results[0].price);
           console.log(results[0]);
-          price = results[0].price;
+          price = JSON.parse(results[0]);
           complete();
         })
     }
@@ -87,15 +87,15 @@ module.exports = function(){
         if (p3 !== ''){count++;}
         if(p1 !== ''){
           var p1_quantity = req.body.pizza1_quantity;
-          var p1_price = JSON.parse(getPrice(mysql, p1, complete, p1_price));
+          var p1_price = getPrice(mysql, p1, complete, p1_price);
         }
         if(p2 !== ''){
           var p2_quantity = req.body.pizza1_quantity;
-          var p2_price = JSON.parse(getPrice(mysql, p2, complete, p2_price));
+          var p2_price = getPrice(mysql, p2, complete, p2_price);
         }
         if(p3 !== ''){
           var p3_quantity = req.body.pizza1_quantity;
-          var p3_price = JSON.parse(getPrice(mysql, p3, complete, p3_price));
+          var p3_price = getPrice(mysql, p3, complete, p3_price);
         }
 
         function complete(){
