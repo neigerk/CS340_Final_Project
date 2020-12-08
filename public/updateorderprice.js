@@ -21,12 +21,24 @@ function updatePrice(){
   var p3_price_field = document.getElementById('pizza3_cost');
   if (p1.value !== ''){
     getPrice(p1.value, p1_quantity, p1_price_field);
+  } else {
+    p1_quantity.value = 0;
+    p1_price_field.value = 0;
+    p1_price_field.innerHTML = "$0.00";
   }
   if (p2.value !== ''){
     getPrice(p2.value, p2_quantity, p2_price_field);
+  } else {
+    p2_quantity.value = 0;
+    p2_price_field.value = 0;
+    p2_price_field.innerHTML = "$0.00";
   }
   if (p3.value !== ''){
     getPrice(p3.value, p3_quantity, p3_price_field);
+  } else {
+    p3_quantity.value = 0;
+    p3_price_field.value = 0;
+    p3_price_field.innerHTML = "$0.00";
   }
 }
 
