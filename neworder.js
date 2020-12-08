@@ -70,7 +70,7 @@ module.exports = function(){
             }
             console.log(results[0].price);
             console.log(results[0]);
-            price = JSON.parse(results[0]);
+            price = Number(results[0]);
             complete();
           })
         }
