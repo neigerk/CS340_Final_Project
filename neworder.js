@@ -194,33 +194,35 @@ module.exports = function(){
                     res.end();
                 }else{
                     console.log("successfully added new row");
+                    if(p2 !== ''){
+                      var inserts = [p2, orderID, p2_quantity];
+                      sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+                          if(error){
+                              console.log(JSON.stringify(error))
+                              res.write(JSON.stringify(error));
+                              res.end();
+                          }else{
+                              console.log("successfully added new row");
+                              if(p3 !== ''){
+                                var inserts = [p3, orderID, p3_quantity];
+                                sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+                                    if(error){
+                                        console.log(JSON.stringify(error))
+                                        res.write(JSON.stringify(error));
+                                        res.end();
+                                    }else{
+                                        console.log("successfully added new row");
+                                    }
+                                  });
+                              }
+                          }
+                        });
+                    }
                 }
               });
           }
-          if(p2 !== ''){
-            var inserts = [p2, orderID, p2_quantity];
-            sql = mysql.pool.query(sql,inserts,function(error, results, fields){
-                if(error){
-                    console.log(JSON.stringify(error))
-                    res.write(JSON.stringify(error));
-                    res.end();
-                }else{
-                    console.log("successfully added new row");
-                }
-              });
-          }
-          if(p3 !== ''){
-            var inserts = [p3, orderID, p3_quantity];
-            sql = mysql.pool.query(sql,inserts,function(error, results, fields){
-                if(error){
-                    console.log(JSON.stringify(error))
-                    res.write(JSON.stringify(error));
-                    res.end();
-                }else{
-                    console.log("successfully added new row");
-                }
-              });
-          }
+
+
 
         }
     });
