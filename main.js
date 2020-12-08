@@ -19,9 +19,9 @@ app.set('view engine', 'handlebars');
 app.set('port', process.argv[2]);
 app.set('mysql', mysql);
 //Example Code
-app.use('/people_certs', require('./people_certs.js'));
-app.use('/people', require('./people.js'));
-app.use('/planets', require('./planets.js'));
+// app.use('/people_certs', require('./people_certs.js'));
+// app.use('/people', require('./people.js'));
+// app.use('/planets', require('./planets.js'));
 //Ours
 app.use('/newcustomer', require('./newcustomer.js'));
 app.use('/neworder', require('./neworder.js'));

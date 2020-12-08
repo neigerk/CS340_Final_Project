@@ -145,12 +145,6 @@ module.exports = function(){
 
         function complete(){
             callbackCount++;
-            // console.log("p1_price: " + p1_price);
-            // console.log("p2_price: " + p2_price);
-            // console.log("p3_price: " + p3_price);
-            // console.log("p1_price.price: " + p1_price.price);
-            // console.log("p2_price.price: " + p2_price.price);
-            // console.log("p3_price.price: " + p3_price.price);
             if(callbackCount >= 3){
 
                 if (p1 !== ''){total = Number(total) + (Number(p1_quantity) * Number(p1_price));}
