@@ -57,23 +57,27 @@ module.exports = function(){
 
 
     function getPrice(mysql, pizzaID, complete, price){
-        var query = "SELECT Pizzas.pizza_price AS price FROM Pizzas WHERE pizzaID = " + pizzaID;
-
-        mysql.pool.query(query, function(error, results, fields){
-          if(error){
-            res.write(JSON.stringify(error));
-            res.end();
-          }
-          console.log(results[0].price);
-          console.log(results[0]);
-          price = JSON.parse(results[0]);
+        if (pizzaID == ''){
+          price = 0;
           complete();
-        })
+        } else {
+          var query = "SELECT Pizzas.pizza_price AS price FROM Pizzas WHERE pizzaID = " + pizzaID;
+
+          mysql.pool.query(query, function(error, results, fields){
+            if(error){
+              res.write(JSON.stringify(error));
+              res.end();
+            }
+            console.log(results[0].price);
+            console.log(results[0]);
+            price = JSON.parse(results[0]);
+            complete();
+          })
+        }
     }
 
     router.post('/', function(req, res){
         var callbackCount = 0;
-        var count = 0;
         var mysql = req.app.get('mysql');
         console.log(req.body);
         var today = new Date().toISOString().slice(0,10);
@@ -82,20 +86,23 @@ module.exports = function(){
         var p1 = req.body.pizza1;
         var p2 = req.body.pizza2;
         var p3 = req.body.pizza3;
-        if (p1 !== ''){count++;}
-        if (p2 !== ''){count++;}
-        if (p3 !== ''){count++;}
+        var p1_quantity = 0;
+        var p2_quantity = 0;
+        var p3_quantity = 0;
+        var p1_price = 0;
+        var p2_price = 0;
+        var p3_price = 0;
         if(p1 !== ''){
           var p1_quantity = req.body.pizza1_quantity;
-          var p1_price = getPrice(mysql, p1, complete, p1_price);
+          getPrice(mysql, p1, complete, p1_price);
         }
         if(p2 !== ''){
           var p2_quantity = req.body.pizza1_quantity;
-          var p2_price = getPrice(mysql, p2, complete, p2_price);
+          getPrice(mysql, p2, complete, p2_price);
         }
         if(p3 !== ''){
           var p3_quantity = req.body.pizza1_quantity;
-          var p3_price = getPrice(mysql, p3, complete, p3_price);
+          getPrice(mysql, p3, complete, p3_price);
         }
 
         function complete(){
@@ -103,7 +110,10 @@ module.exports = function(){
             console.log("p1_price: " + p1_price);
             console.log("p2_price: " + p2_price);
             console.log("p3_price: " + p3_price);
-            if(callbackCount >= count){
+            console.log("p1_price.price: " + p1_price.price);
+            console.log("p2_price.price: " + p2_price.price);
+            console.log("p3_price.price: " + p3_price.price);
+            if(callbackCount >= 3){
 
                 if (p1 !== ''){total = Number(total) + (Number(p1_quantity) * Number(p1_price));}
                 if (p2 !== ''){total = Number(total) + (Number(p2_quantity) * Number(p2_price));}
