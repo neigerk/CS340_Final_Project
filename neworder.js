@@ -92,18 +92,13 @@ module.exports = function(){
         var p1_price = 0;
         var p2_price = 0;
         var p3_price = 0;
-        if(p1 !== ''){
-          var p1_quantity = req.body.pizza1_quantity;
-          getPrice(mysql, p1, complete, p1_price);
-        }
-        if(p2 !== ''){
-          var p2_quantity = req.body.pizza1_quantity;
-          getPrice(mysql, p2, complete, p2_price);
-        }
-        if(p3 !== ''){
-          var p3_quantity = req.body.pizza1_quantity;
-          getPrice(mysql, p3, complete, p3_price);
-        }
+        getPrice(mysql, p1, complete, p1_price);
+        getPrice(mysql, p2, complete, p2_price);
+        getPrice(mysql, p3, complete, p3_price);
+        if(p1 !== ''){var p1_quantity = req.body.pizza1_quantity;}
+        if(p2 !== ''){var p2_quantity = req.body.pizza1_quantity;}
+        if(p3 !== ''){var p3_quantity = req.body.pizza1_quantity;}
+
 
         function complete(){
             callbackCount++;
