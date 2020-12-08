@@ -1,13 +1,13 @@
-function updatePrice(){
-    $.ajax({
-        url: '/neworder/',
-        type: 'PUT',
-        data: $('#add-new-order').serialize(),
-        success: function(result){
-            window.location.replace("/");
-        }
-    })
-};
+// function updatePrice(){
+//     $.ajax({
+//         url: '/neworder/',
+//         type: 'PUT',
+//         data: $('#add-new-order').serialize(),
+//         success: function(result){
+//             window.location.replace("/");
+//         }
+//     })
+// };
 
 function updatePrice(){
   p1 = getElementById(pizza1).value;
@@ -23,7 +23,7 @@ function getPrice(pizzaID){
     var requestURL = '/get/' + pizzaID;
     getRequest.open('GET', requestURL);
 
-    getRequest.addEventListener('load' function (event) {
+    getRequest.addEventListener('load', function (event) {
       if (event.target.status !== 200) {
         var responseBody = event.target.response;
         alert("Error accessing pizza prices " + responseBody);
