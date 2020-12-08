@@ -106,7 +106,7 @@ module.exports = function(){
         });
     
         req.body.total_price = Number(total_price) + price3 + price2 + price1;
-        res.render('neworder');
+        res.render('neworder', req.body.total_price);
     });
 
     return router;
