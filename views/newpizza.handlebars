@@ -1,0 +1,58 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+
+
+<h2> Add a New Pizza</h2>
+<form id='add_new_pizza' action='' method='post'>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label for="pizza_name">New Pizza Name: </label><br>
+    <input type="text" id="pizza_name" name="pizza_name" value=""><br>
+    <label for="topping1">Topping 1: </label>
+    <select name="topping1">
+        <option value='NULL'>None</option>
+        {{#each topping}}
+        <option value={{id}}>{{topping_name}}</option>
+        {{/each}}
+    </select><br>
+    <label for="topping2">Topping 2: </label>
+    <select name="topping2">
+        <option value='NULL'>None</option>
+        {{#each topping}}
+        <option value={{id}}>{{topping_name}}</option>
+        {{/each}}
+    </select><br>
+    <label for="topping3">Topping 3: </label>
+    <select name="topping3">
+        <option value='NULL'>None</option>
+        {{#each topping}}
+        <option value={{id}}>{{topping_name}}</option>
+        {{/each}}
+    </select><br>
+    <label for="topping4">Topping 4: </label>
+    <select name="topping4">
+        <option value='NULL'>None</option>
+        {{#each topping}}
+        <option value={{id}}>{{topping_name}}</option>
+        {{/each}}
+    </select><br>
+    <label for="topping5">Topping 5: </label>
+    <select name="topping5">
+        <option value='NULL'>None</option>
+        {{#each topping}}
+        <option value={{id}}>{{topping_name}}</option>
+        {{/each}}
+    </select><br>
+    <label for="price">Total Price: </label>
+    <input type="text" id="pizza_price" name="pizza_price" value="(Price)"><br>
+    <input type="submit" value="Submit">
+</form>
+
+<!-- <form id='search_people' action='' method=''>
+<!- this form does not submit directly, the button handles all the interaction with backend -->
+    <!-- <label> Search people for first name starting with:</label>
+    <input id='first_name_search_string' type='text' name='first_name_search_string' value=''>
+    <input type="button" value="Search" onclick="searchPeopleByFirstName()">
+</form> -->
+</html>
