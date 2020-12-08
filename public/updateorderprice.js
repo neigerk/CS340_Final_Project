@@ -19,26 +19,15 @@ function updatePrice(){
   var p3 = document.getElementById('pizza3');
   var p3_quantity = document.getElementById('pizza3_quantity');
   var p3_price_field = document.getElementById('pizza3_cost');
-  // p2 = document.getElementById('pizza2');
-  // p3 = document.getElementById('pizza3');
   if (p1.value !== ''){
-    console.log("p1.value:" + p1.value);
-    console.log("p1.response:" + getPrice(p1.value, p1_quantity, p1_price_field));
+    getPrice(p1.value, p1_quantity, p1_price_field);
   }
   if (p2.value !== ''){
-    console.log("p2.value:" + p2.value);
-    console.log("p2.response:" + getPrice(p2.value, p2_quantity, p2_price_field));
+    getPrice(p2.value, p2_quantity, p2_price_field);
   }
   if (p3.value !== ''){
-    console.log("p3.value:" + p3.value);
-    console.log("p3.response:" + getPrice(p3.value, p3_quantity, p3_price_field));
+    getPrice(p3.value, p3_quantity, p3_price_field);
   }
-  // console.log(getPrice(p1.value));
-  // console.log(getPrice(p2.value));
-  // console.log(getPrice(p3.value));
-  // console.log(getPrice(p1.value));
-  // console.log(getPrice(p2.value));
-  // console.log(getPrice(p3.value));
 }
 
 function getPrice(pizzaID, quantity, field){
@@ -54,10 +43,10 @@ function getPrice(pizzaID, quantity, field){
         var obj = JSON.parse(event.target.response);
         var price = obj.price * quantity.value;
         field.innerHTML = "$"+price.toString();
-        console.log(obj);
-        console.log(obj.price);
-        console.log(event.target.response);
-        console.log(event.target.response.price);
+        // console.log(obj);
+        // console.log(obj.price);
+        // console.log(event.target.response);
+        // console.log(event.target.response.price);
       }
     });
     getRequest.send();
