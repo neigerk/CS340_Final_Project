@@ -59,7 +59,11 @@ function updateTotal (){
   var p2_price_field = document.getElementById('pizza2_cost');
   var p3_price_field = document.getElementById('pizza3_cost');
   var total_field = document.getElementById('total_price');
-  var total = Number(p1_price_field.value) + Number(p2_price_field.value) + Number(p3_price_field.value);
+  var total = 0;
+  if(p1_price_field.value) total = total + Number(p1_price_field.value);
+  if(p2_price_field.value) total = total + Number(p2_price_field.value);
+  if(p3_price_field.value) total = total + Number(p3_price_field.value);
+  // Number(p1_price_field.value) + Number(p2_price_field.value) + Number(p3_price_field.value);
   total_field.innerHTML = "$" + total.toString();
   total_field.value = total;
 }
