@@ -48,17 +48,19 @@ module.exports = function(){
         });
 
         pid = 8;
-        sql = mysql.pool.query("SELECT pizzaID FROM Pizzas WHERE pizza_name = '" + req.body.pizza_nae + "'", function(error, results){
+        sql = mysql.pool.query("SELECT pizzaID FROM Pizzas WHERE pizza_name = '" + req.body.pizza_name + "'", function(error, results){
             if(error){
                 console.log(JSON.stringify(error))
                 res.write(JSON.stringify(error));
                 res.end();
+            }else{
+
+            pid = results[0].pizzaID;
+            console.log(results);
+            console.log(pid);
             }
-
-            pid = results;
-
         });
-        
+
         if(req.body.topping1 == 'NULL'){
             res.redirect('./');
         }else{
