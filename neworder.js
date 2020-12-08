@@ -119,7 +119,7 @@ module.exports = function(){
           res.write(JSON.stringify(error));
           res.end();
         }
-        context = results;
+        context.price = results;
         complete();
       })
     }
