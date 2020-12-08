@@ -78,6 +78,7 @@ module.exports = function(){
 
     router.post('/', function(req, res){
         var callbackCount = 0;
+        var orderID;
         var mysql = req.app.get('mysql');
         console.log(req.body);
         var today = new Date().toISOString().slice(0,10);
@@ -92,9 +93,6 @@ module.exports = function(){
         var p1_price = 0;
         var p2_price = 0;
         var p3_price = 0;
-        // getPrice(mysql, p1, complete, p1_price);
-        // getPrice(mysql, p2, complete, p2_price);
-        // getPrice(mysql, p3, complete, p3_price);
         if(p1 !== ''){
           var p1_quantity = req.body.pizza1_quantity;
 
@@ -143,8 +141,6 @@ module.exports = function(){
             complete();
           })
         } else {complete();}
-
-
         function complete(){
             callbackCount++;
             console.log("p1_price: " + p1_price);
@@ -168,6 +164,12 @@ module.exports = function(){
                         res.end();
                     }else{
                         res.redirect('./');
+                        //
+                        var sql = "SELECT orderID FROM Orders WHERE order_price = '?' AND date = '?' AND CID = '?'";
+                        var inserts = [total, today, req.body.customer];
+                        
+                        var sql = "INSERT INTO Pizzas_Orders (pizzaID, orderID, quantity) VALUES (?,?,?)";
+
                     }
                 });
             }

@@ -47,7 +47,8 @@ module.exports = function(){
             //}
         });
 
-        var pid = "SELECT pizzaID FROM Pizzas WHERE pizza_name = '" + req.body.pizza_name;
+        var pid = "SELECT pizzaID FROM Pizzas WHERE pizza_name = '" + req.body.pizza_name + "'";
+        
         if(req.body.topping1 == 'NULL'){
             res.redirect('./');
         }else{
