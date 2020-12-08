@@ -25,6 +25,7 @@ function updatePrice(){
     p1_quantity.value = 0;
     p1_price_field.value = 0;
     p1_price_field.innerHTML = "$0.00";
+    updateTotal();
   }
   if (p2.value !== ''){
     getPrice(p2.value, p2_quantity, p2_price_field);
@@ -32,6 +33,7 @@ function updatePrice(){
     p2_quantity.value = 0;
     p2_price_field.value = 0;
     p2_price_field.innerHTML = "$0.00";
+    updateTotal();
   }
   if (p3.value !== ''){
     getPrice(p3.value, p3_quantity, p3_price_field);
@@ -39,6 +41,7 @@ function updatePrice(){
     p3_quantity.value = 0;
     p3_price_field.value = 0;
     p3_price_field.innerHTML = "$0.00";
+    updateTotal();
   }
 }
 
