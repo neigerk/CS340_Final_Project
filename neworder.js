@@ -167,7 +167,7 @@ module.exports = function(){
                     }else{
                         res.redirect('./');
                         //
-                        var sql = "SELECT orderID FROM Orders WHERE order_price = '?' AND date = '?' AND CID = '?'";
+                        var sql = "SELECT orderID FROM Orders WHERE order_price = ? AND date = ? AND CID = ?";
                         var inserts = [total, today, req.body.customer];
                         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
                             if(error){
