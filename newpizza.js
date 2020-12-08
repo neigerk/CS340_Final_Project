@@ -36,7 +36,6 @@ module.exports = function(){
         console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Pizzas (pizza_name, pizza_price) VALUES (?, ?)";
-        var pid = "SELECT pizzaID FROM Pizzas WHERE pizza_name = '" + req.body.pizza_name;
         var inserts = [req.body.pizza_name, Number(req.body.pizza_price)];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
@@ -48,6 +47,7 @@ module.exports = function(){
             //}
         });
 
+        var pid = "SELECT pizzaID FROM Pizzas WHERE pizza_name = '" + req.body.pizza_name;
         if(req.body.topping1 == 'NULL'){
             res.redirect('./');
         }else{
