@@ -110,9 +110,10 @@ module.exports = function(){
     // }
 
     function getPizzaPrice(req, res, mysql, context, complete){
+      console.log(req.params);
       var query = "SELECT Pizzas.pizza_price AS price FROM Pizzas WHERE pizzaID = " + req.params.pizzaID;
       console.log(query);
-      console.log(req.params);
+
       mysql.pool.query(query, function(error, results, fields){
         if(error){
           res.write(JSON.stringify(error));
