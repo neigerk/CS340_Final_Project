@@ -10,9 +10,9 @@
 // };
 
 function updatePrice(){
-  p1 = document.getElementById("pizza1");
-  p2 = document.getElementById("pizza2");
-  p3 = document.getElementById("pizza3");
+  p1 = document.getElementById('pizza1');
+  p2 = document.getElementById('pizza2');
+  p3 = document.getElementById('pizza3');
   console.log(getPrice(p1));
   console.log(getPrice(p2));
   console.log(getPrice(p3));
@@ -33,5 +33,6 @@ function getPrice(pizzaID){
       } else {
         return event.target.response;
       }
-    })
+    });
+    getRequest.send();
 }
