@@ -57,10 +57,16 @@ module.exports = function(){
 
     router.post('/', function(req, res){
 //        console.log(req.body.homeworld)
-        console.log(req.body)
+        console.log(req.body);
+        console.log(req);
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+        today = yyyy+"-"+mm+"-"+dd;
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Orders (order_price, date, CID, order_status) VALUES (?,?,?,?)";
-        var inserts = [Number(req.body.total_price), today, req.body.cid, "ORDERED"];
+        var inserts = [Number(req.body.total_price), today, req.body.customer, "ORDERED"];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
