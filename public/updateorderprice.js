@@ -52,7 +52,7 @@ function getPrice(pizzaID, quantity, field){
         alert("Error accessing pizza prices " + responseBody);
       } else {
         var p4 = event.target.response;
-        console.log(event.target.response);
+        console.log(event.target.response.price);
         return event.target.response;
 
       }
