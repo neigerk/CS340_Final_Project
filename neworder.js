@@ -141,8 +141,8 @@ module.exports = function(){
             p3_price = results[0].price;
             console.log("p3_price: " + p3_price);
             complete();
-          }) else {complete();}
-        }
+          })
+        } else {complete();}
 
 
         function complete(){
