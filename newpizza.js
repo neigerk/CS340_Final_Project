@@ -19,7 +19,7 @@ module.exports = function(){
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["filtersales.js"];
+        context.jsscripts = ["filtersales.js","deleteperson.js","filterpeople.js","searchpeople.js"];
         var mysql = req.app.get('mysql');
         getTopping(res, mysql, context, complete);
         function complete(){
@@ -47,7 +47,7 @@ module.exports = function(){
             //}
         });
 
-        var pid = 0;
+        pid = 0;
         sql = mysql.pool.query("SELECT pizzaID FROM Pizzas WHERE pizza_name = '" + req.body.pizza_nae + "'", function(error, results){
             if(error){
                 console.log(JSON.stringify(error))
@@ -58,7 +58,7 @@ module.exports = function(){
             pid = results;
 
         });
-
+        
         if(req.body.topping1 == 'NULL'){
             res.redirect('./');
         }else{
