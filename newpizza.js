@@ -47,7 +47,7 @@ module.exports = function(){
             //}
         });
 
-        pid = 0;
+        pid = 8;
         sql = mysql.pool.query("SELECT pizzaID FROM Pizzas WHERE pizza_name = '" + req.body.pizza_nae + "'", function(error, results){
             if(error){
                 console.log(JSON.stringify(error))
@@ -63,7 +63,7 @@ module.exports = function(){
             res.redirect('./');
         }else{
         var sql1 = "INSERT INTO Pizzas_Toppings (pizzaID, toppingID) VALUES(?, ?)";
-        var inserts1 = [pid, req.body.topping1];
+        var inserts1 = [pid, Number(req.body.topping1)];
         sql1 = mysql.pool.query(sql1,inserts1,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
@@ -79,7 +79,7 @@ module.exports = function(){
             res.redirect('./');
         }else{
         var sql2 = "INSERT INTO Pizzas_Toppings (pizzaID, toppingID) VALUES(?, ?)";
-        var inserts2 = [pid, req.body.topping2];
+        var inserts2 = [pid, Number(req.body.topping2)];
         sql2 = mysql.pool.query(sql2,inserts2,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
@@ -95,7 +95,7 @@ module.exports = function(){
             res.redirect('./');
         }else{
         var sql3 = "INSERT INTO Pizzas_Toppings (pizzaID, toppingID) VALUES(?, ?)";
-        var inserts3 = [pid, req.body.topping3];
+        var inserts3 = [pid, Number(req.body.topping3)];
         sql3 = mysql.pool.query(sql3,inserts3,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
@@ -111,7 +111,7 @@ module.exports = function(){
             res.redirect('./');
         }else{
         var sql4 = "INSERT INTO Pizzas_Toppings (pizzaID, toppingID) VALUES(?, ?)";
-        var inserts4 = [pid, req.body.topping4];
+        var inserts4 = [pid, Number(req.body.topping4)];
         sql4 = mysql.pool.query(sql4,inserts4,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
@@ -127,7 +127,7 @@ module.exports = function(){
             res.redirect('./');
         }else{
         var sql5 = "INSERT INTO Pizzas_Toppings (pizzaID, toppingID) VALUES(?, ?)";
-        var inserts5 = [pid, req.body.topping5];
+        var inserts5 = [pid, Number(req.body.topping5)];
         sql5 = mysql.pool.query(sql5,inserts5,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
