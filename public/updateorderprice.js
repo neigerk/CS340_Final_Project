@@ -52,14 +52,11 @@ function getPrice(pizzaID, quantity, field){
         alert("Error accessing pizza prices " + responseBody);
       } else {
         var obj = JSON.parse(event.target.response);
+        field.innerHTML = "$"+stringify(obj.price * quantity.value);
         console.log(obj);
         console.log(obj.price);
         console.log(event.target.response);
         console.log(event.target.response.price);
-        // console.log(event.target.response);
-        // console.log(event.target.response);
-        return event.target.response;
-
       }
     });
     getRequest.send();
