@@ -119,13 +119,13 @@ module.exports = function(){
           res.write(JSON.stringify(error));
           res.end();
         }
-        context.price = results;
+        context.price = results[0].price;
         console.log("results: " + results);
         console.log("results.price: " + results.price);
         console.log("results[0].price: " + results[0].price);
-        console.log("results[1].price: " + results[1].price);
+        //console.log("results[1].price: " + results[1].price);
         console.log("results[0]: " + results[0]);
-        console.log("results[1]: " + results[1]);
+        //console.log("results[1]: " + results[1]);
 
         complete();
       })
