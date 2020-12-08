@@ -26,7 +26,7 @@
         {{#each pizza}}
         <option id='p2' value={{pid}}>{{pizza_name}} {{pizza_price}}</option>
         {{/each}}
-    </select><br>
+    </select><br> 
     <label for="Pizza 3">Pizza 3: </label>
     <select name="pizza3" onchange="updatePrice()">
         <option value=''>Null</option>
@@ -35,7 +35,7 @@
         {{/each}}
     </select><br>
     <label for="total">Total: </label>
-    <div id='total_price' >0</div><br>
+    <label id='total_price'>0</label><br>
     <input type="submit" value="Submit">
 </form>
 
