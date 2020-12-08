@@ -110,7 +110,7 @@ module.exports = function(){
             console.log("p1_price: " + p1_price);
             complete();
           })
-        }
+        } else {complete();}
         if(p2 !== ''){
           var p2_quantity = req.body.pizza1_quantity;
 
@@ -126,7 +126,7 @@ module.exports = function(){
             console.log("p2_price: " + p2_price);
             complete();
           })
-        }
+        } else {complete();}
         if(p3 !== ''){
           var p3_quantity = req.body.pizza1_quantity;
 
@@ -141,7 +141,7 @@ module.exports = function(){
             p3_price = results[0].price;
             console.log("p3_price: " + p3_price);
             complete();
-          })
+          }) else {complete();}
         }
 
 
