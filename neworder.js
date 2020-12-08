@@ -64,7 +64,9 @@ module.exports = function(){
             res.write(JSON.stringify(error));
             res.end();
           }
-          return results[0].price;
+          console.log(results[0].price);
+          console.log(results[0]);
+          return results[0];
         })
     }
 
