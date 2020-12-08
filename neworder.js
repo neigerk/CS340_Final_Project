@@ -59,11 +59,12 @@ module.exports = function(){
 //        console.log(req.body.homeworld)
         console.log(req.body);
         console.log(req);
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0');
-        var yyyy = today.getFullYear();
-        today = yyyy+"-"+mm+"-"+dd;
+        var today = new Date().toISOString().slice(0,10);
+        console.log(today);
+        // var dd = String(today.getDate()).padStart(2, '0');
+        // var mm = String(today.getMonth() + 1).padStart(2, '0');
+        // var yyyy = today.getFullYear();
+        // today = yyyy+"-"+mm+"-"+dd;
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Orders (order_price, date, CID, order_status) VALUES (?,?,?,?)";
         var inserts = [Number(req.body.total_price), today, req.body.customer, "ORDERED"];
