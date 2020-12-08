@@ -132,6 +132,7 @@ module.exports = function(){
       function complete(){
         callbackCount++;
         if(callbackCount >= 1){
+          console.log(context);
           res.json(context);
         }
       }
