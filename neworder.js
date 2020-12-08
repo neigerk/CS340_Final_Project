@@ -56,9 +56,9 @@ module.exports = function(){
     });
 
 
-    function getPrice(mysql, pizzaID, complete, price){
+    function getPrice(mysql, pizzaID, complete, pizza_price){
         if (pizzaID == ''){
-          price = 0;
+          pizza_price.price = 0;
           complete();
         } else {
           var query = "SELECT Pizzas.pizza_price AS price FROM Pizzas WHERE pizzaID = " + pizzaID;
@@ -70,7 +70,7 @@ module.exports = function(){
             }
             console.log(results[0].price);
             console.log(results[0]);
-            price = Number(results[0].price);
+            pizza_price.price = results[0];
             complete();
           })
         }
@@ -89,9 +89,9 @@ module.exports = function(){
         var p1_quantity = 0;
         var p2_quantity = 0;
         var p3_quantity = 0;
-        var p1_price = 0;
-        var p2_price = 0;
-        var p3_price = 0;
+        var p1_price = {};
+        var p2_price = {};
+        var p3_price = {};
         getPrice(mysql, p1, complete, p1_price);
         getPrice(mysql, p2, complete, p2_price);
         getPrice(mysql, p3, complete, p3_price);
