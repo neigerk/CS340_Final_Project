@@ -124,7 +124,7 @@ module.exports = function(){
       })
     }
 
-    router.get('/get/:pizzaID', function(res, req, mysql){
+    router.get('/get/:pizzaID', function(req, res){
       var callbackCount = 0;
       var mysql = req.app.get('mysql');
       getPizzaPrice(req, res, mysql, complete);
