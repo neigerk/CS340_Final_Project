@@ -14,15 +14,15 @@ function updatePrice(){
   p2 = document.getElementById('pizza2');
   p3 = document.getElementById('pizza3');
   if (p1.value !== ''){
-    console.log("p1.value:" + p1.value));
+    console.log("p1.value:" + p1.value);
     console.log("p1.response:" + getPrice(p1.value));
   }
   if (p2.value !== ''){
-    console.log("p2.value:" + p2.value));
+    console.log("p2.value:" + p2.value);
     console.log("p2.response:" + getPrice(p2.value));
   }
   if (p3.value !== ''){
-    console.log("p3.value:" + p3.value));
+    console.log("p3.value:" + p3.value);
     console.log("p3.response:" + getPrice(p3.value));
   }
   // console.log(getPrice(p1.value));
