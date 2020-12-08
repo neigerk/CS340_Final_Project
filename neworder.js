@@ -72,40 +72,30 @@ module.exports = function(){
     }
 
     router.post('/', function(req, res){
+        var callbackCount = 0;
+        var count = 0;
         var mysql = req.app.get('mysql');
         console.log(req.body);
-        console.log(req);
         var today = new Date().toISOString().slice(0,10);
-        console.log(today);
         var customer = req.body.customer;
         var total = 0;
         var p1 = req.body.pizza1;
         var p2 = req.body.pizza2;
         var p3 = req.body.pizza3;
-        var count = 0;
-        if (p1 !== ''){
-            count++;
-        }
-        if (p2 !== ''){
-            count++;
-        }
-        if (p3 !== ''){
-            count++;
-        }
+        if (p1 !== ''){count++;}
+        if (p2 !== ''){count++;}
+        if (p3 !== ''){count++;}
         if(p1 !== ''){
           var p1_quantity = req.body.pizza1_quantity;
           var p1_price = getPrice(mysql, p1, complete, p1_price);
-          //console.log("p1_price: " + p1_price);
         }
         if(p2 !== ''){
           var p2_quantity = req.body.pizza1_quantity;
           var p2_price = getPrice(mysql, p2, complete, p2_price);
-          //console.log("p2_price: " + p2_price);
         }
         if(p3 !== ''){
           var p3_quantity = req.body.pizza1_quantity;
           var p3_price = getPrice(mysql, p3, complete, p3_price);
-          //console.log("p3_price: " + p3_price);
         }
 
         function complete(){
