@@ -141,6 +141,8 @@ module.exports = function(){
             complete();
           })
         } else {complete();}
+
+
         function complete(){
             callbackCount++;
             console.log("p1_price: " + p1_price);
@@ -167,8 +169,16 @@ module.exports = function(){
                         //
                         var sql = "SELECT orderID FROM Orders WHERE order_price = '?' AND date = '?' AND CID = '?'";
                         var inserts = [total, today, req.body.customer];
-                        
-                        var sql = "INSERT INTO Pizzas_Orders (pizzaID, orderID, quantity) VALUES (?,?,?)";
+                        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+                            if(error){
+                                console.log(JSON.stringify(error))
+                                res.write(JSON.stringify(error));
+                                res.end();
+                            }else{
+                                orderID = results[0].orderID;
+                                complete2();
+                            }
+
 
                     }
                 });
