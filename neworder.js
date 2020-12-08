@@ -109,7 +109,7 @@ module.exports = function(){
     //     });
     // }
 
-    function getPizzaPrice(req, res, mysql, context, complete){
+    function getPizzaPrice(req, res, mysql, complete){
       console.log(req.params);
       var query = "SELECT Pizzas.pizza_price AS price FROM Pizzas WHERE pizzaID = " + req.params.pizzaID;
       console.log(query);
