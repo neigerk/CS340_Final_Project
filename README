@@ -1,0 +1,15 @@
+To compile the program:
+    1. In the terminal navigate to the folder with the .cpp file (should be the
+    same as this README file, unless they have been moved since unzipping).
+
+    2. Run the following command in the terminal:
+
+        g++ -std=c++11 WrestlerRivalries.cpp -o WrestlerRivalries
+
+Once compiled, enter the name of the program into the terminal, followed by the name of the input file.
+
+        WrestlerRivalries "input file"
+
+        for example:
+
+        WrestlerRivalries input.txt

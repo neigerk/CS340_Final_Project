@@ -31,8 +31,8 @@ app.use('/browsepizzasales', require('./browsepizzasales.js'));
 app.use('/browsetoppingusage', require('./browsetoppingusage.js'));
 app.use('/browsecustomerorder', require('./browsecustomerorder.js'));
 app.use('/browsesalestotal', require('./browsesalestotal.js'));
-app.use('/updatecustomer', require('./updatecustomer.js'));
-app.use('/cancelorder', require('./cancelorder.js'));
+// app.use('/updatecustomer', require('./updatecustomer.js'));
+// app.use('/cancelorder', require('./cancelorder.js'));
 app.use('/', express.static('public'));
 
 app.use(function(req,res){

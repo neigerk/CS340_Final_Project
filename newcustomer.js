@@ -19,7 +19,7 @@ module.exports = function(){
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["filtersales.js","deleteperson.js","filterpeople.js","searchpeople.js"];
+        context.jsscripts = ["filtersales.js"];
         var mysql = req.app.get('mysql');
         getPizza(res, mysql, context, complete);
         function complete(){

@@ -19,7 +19,7 @@ module.exports = function(){
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["filtersales.js","deleteperson.js","filterpeople.js","searchpeople.js"];
+        context.jsscripts = ["filtersales.js"];
         var mysql = req.app.get('mysql');
         getTopping(res, mysql, context, complete);
         function complete(){
@@ -58,7 +58,7 @@ module.exports = function(){
             pid = results;
 
         });
-        
+
         if(req.body.topping1 == 'NULL'){
             res.redirect('./');
         }else{

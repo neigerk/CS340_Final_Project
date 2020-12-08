@@ -99,7 +99,7 @@ module.exports = function(){
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["filtersales.js","deleteperson.js","filterpeople.js","searchpeople.js"];
+        context.jsscripts = ["filtersales.js"];
         var mysql = req.app.get('mysql');
         getSales(res, mysql, context, complete);
         function complete(){
@@ -115,7 +115,7 @@ module.exports = function(){
     router.get('/filter/:start_date/:end_date', function(req, res){
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["filtersales.js","deleteperson.js","filterpeople.js","searchpeople.js"];
+        context.jsscripts = ["filtersales.js"];
         var mysql = req.app.get('mysql');
         getSalesbyDate(req, res, mysql, context, complete);
         // getPeoplebyHomeworld(req,res, mysql, context, complete);
@@ -133,7 +133,7 @@ module.exports = function(){
     router.get('/search/:s', function(req, res){
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["deleteperson.js","filterpeople.js","searchpeople.js"];
+        context.jsscripts = [];
         var mysql = req.app.get('mysql');
         getPeopleWithNameLike(req, res, mysql, context, complete);
         getPlanets(res, mysql, context, complete);
@@ -150,7 +150,7 @@ module.exports = function(){
     router.get('/:id', function(req, res){
         callbackCount = 0;
         var context = {};
-        context.jsscripts = ["selectedplanet.js", "updateperson.js"];
+        context.jsscripts = [];
         var mysql = req.app.get('mysql');
         getPerson(res, mysql, context, req.params.id, complete);
         getPlanets(res, mysql, context, complete);
